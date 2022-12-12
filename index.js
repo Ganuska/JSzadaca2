@@ -56,8 +56,10 @@ const startUtrke = () => {
   if (sortirano.length > 1) {
     if (sortirano[0].brzina > sortirano[1].brzina) {
       pobjednik.innerHTML = `<h1> pobjednik je  ${sortirano[0].ime}</h1> <button class="btn" onClick="reset()">RESTART</button>`;
+      window.scrollTo(0, document.body.scrollHeight);
     } else {
-      pobjednik.innerHTML = `<h1>ima vise pobjednika</h1>`;
+      pobjednik.innerHTML = `<h1>ima vise pobjednika</h1> <button class="btn" onClick="reset()">RESTART</button>`;
+      window.scrollTo(0, document.body.scrollHeight);
     }
   } else {
     pobjednik.innerHTML = "";
