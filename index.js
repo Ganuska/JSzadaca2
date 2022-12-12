@@ -21,12 +21,12 @@ const handleSubmit = (e) => {
     raceContainer.innerHTML = auti
       .map((auto) => {
         return `<div class='autoPodatci'> <h2>ime auta: ${auto.ime}</h2>
-      <h5>boja auta:<div style='background-color:${auto.boja}; width:70px; display:inline-block; color:white; '>${auto.boja}</div></h5>
+      <h5>boja auta:<div style='background-color:${auto.boja}; width:70px; display:inline-block; color:white;'>${auto.boja}</div></h5>
       <h5>brzina auta:${auto.brzina} km/h</h5>
         </div>
         `;
       })
-      .join("");
+      .join(" ");
   };
 
   novi();
@@ -47,9 +47,10 @@ const startUtrke = () => {
         }; animation-duration:${
           duljinaPuta.value / ((sortirano[index].brzina * 1000) / 3600)
         }s; animation-name:vozi;color:white' >${vozilo.ime}</div>
-    <h3>${sortirano[index].ime} je utrku prosao za ${
-          duljinaPuta.value / ((sortirano[index].brzina * 1000) / 3600)
-        } s</h3>
+    <h3>${sortirano[index].ime} je utrku prosao za ${(
+          duljinaPuta.value /
+          ((sortirano[index].brzina * 1000) / 3600)
+        ).toFixed(2)} s</h3>
     `;
       }))
     : (utrka.innerHTML = "niste zadali duljinu");
