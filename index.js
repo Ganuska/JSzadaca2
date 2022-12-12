@@ -39,19 +39,21 @@ const startUtrke = () => {
     return parseInt(b.brzina) - parseInt(a.brzina);
   });
 
-  duljinaPuta.value &&
-    console.log(duljinaPuta.value / ((sortirano[0].brzina * 1000) / 3600));
-  utrka.innerHTML = sortirano.map((vozilo, index) => {
-    return `<div class='boxCar' style='background-color:${
-      vozilo.boja
-    }; animation-duration:${
-      duljinaPuta.value / ((sortirano[index].brzina * 1000) / 3600)
-    }s; animation-name:vozi;color:white' >${vozilo.ime}</div>
+  duljinaPuta.value
+    ? (utrka.innerHTML = sortirano.map((vozilo, index) => {
+        return `<div class='boxCar' style='background-color:${
+          vozilo.boja
+        }; animation-duration:${
+          duljinaPuta.value / ((sortirano[index].brzina * 1000) / 3600)
+        }s; animation-name:vozi;color:white' >${vozilo.ime}</div>
     <h3>${sortirano[index].ime} je utrku prosao za ${
-      duljinaPuta.value / ((sortirano[index].brzina * 1000) / 3600)
-    } s</h3>
+          duljinaPuta.value / ((sortirano[index].brzina * 1000) / 3600)
+        } s</h3>
     `;
-  });
+      }))
+    : (utrka.innerHTML = "niste zadali duljinu");
   window.scrollTo(0, document.body.scrollHeight);
-  pobjednik.innerHTML = `<h1> pobjednik je  ${sortirano[0].ime}</h1>;`;
+  duljinaPuta
+    ? (pobjednik.innerHTML = `<h1> pobjednik je  ${sortirano[0].ime}</h1>;`)
+    : (pobjednik.innerHTML = "");
 };
