@@ -41,18 +41,20 @@ const startUtrke = () => {
   });
 
   duljinaPuta.value
-    ? (utrka.innerHTML = sortirano.map((vozilo, index) => {
-        return `<div class='boxCar' style='background-color:${
-          vozilo.boja
-        }; animation-duration:${
-          duljinaPuta.value / ((sortirano[index].brzina * 1000) / 3600)
-        }s; animation-name:vozi;color:white' >${vozilo.ime}</div>
+    ? (utrka.innerHTML = sortirano
+        .map((vozilo, index) => {
+          return `<div class='boxCar' style='background-color:${
+            vozilo.boja
+          }; animation-duration:${
+            duljinaPuta.value / ((sortirano[index].brzina * 1000) / 3600)
+          }s; animation-name:vozi;color:white' >${vozilo.ime}</div>
     <h3>${sortirano[index].ime} je utrku prosao za ${(
-          duljinaPuta.value /
-          ((sortirano[index].brzina * 1000) / 3600)
-        ).toFixed(2)} s</h3>
+            duljinaPuta.value /
+            ((sortirano[index].brzina * 1000) / 3600)
+          ).toFixed(2)} s</h3>
     `;
-      }))
+        })
+        .join(""))
     : (utrka.innerHTML = "niste zadali duljinu");
   if (sortirano.length > 1) {
     if (sortirano[0].brzina > sortirano[1].brzina) {
